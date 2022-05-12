@@ -1,4 +1,4 @@
-package starter.search;
+package ecommerce.search;
 
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
