@@ -8,7 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,8 +27,12 @@ public class HomePageStepDefinitions {
         highlightedProducts = actor.asksFor(HighlightedProducts.currentlyVisible());
     }
 
-    @Then("she should see an image, title and price for each product")
-    public void she_should_see_an_image_title_and_price_for_each_product() {
+    @Then("{actor} should see an image, title and price for each product")
+    public void she_should_see_an_image_title_and_price_for_each_product(Actor actor) {
+
+        Collection<String> productTitles =  actor.asksFor(HighlightedProducts.names());
+        System.out.println(productTitles);
+
         assertThat(highlightedProducts).isNotEmpty();
 
         assertThat(highlightedProducts).allMatch(
